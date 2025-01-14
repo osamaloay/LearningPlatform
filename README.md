@@ -2,7 +2,7 @@
 A platform intended to enhance the experience of learners to engage in related content and make content delivery specific to learner .the project is under development 
 
 #EERD Schema
-$data = file_get_contents('erd\ mile1.graphml');
+$data = file_get_contents('erd\ mile1.xgml');
 
 $loader = new Graphp\GraphML\Loader();
 $graph = $loader->loadContents($data);
