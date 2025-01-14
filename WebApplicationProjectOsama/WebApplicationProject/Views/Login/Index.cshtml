@@ -1,0 +1,190 @@
+﻿@model WebApplicationProject.Models.User
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden; /* Prevent scrollbars */
+            position: relative; /* Position relative for absolute positioning of video */
+        }
+
+        video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -1; /* Send the video behind other content */
+            transform: translate(-50%, -50%); /* Center the video */
+            object-fit: cover; /* Cover the entire viewport */
+        }
+
+        .login-container {
+            background-color: rgba(35, 39, 42, 0.9); /* Darker card background with some transparency */
+            border-radius: 8px;
+            padding: 30px; /* Adjusted padding */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .login-form h1 {
+            font-size: 28px;
+            color: #7289da; /* Discord blue */
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .login-form .form-control {
+            background-color: #40444b; /* Input background */
+            border: none;
+            border-radius: 5px;
+            color: #ffffff; /* Input text color */
+            padding: 10px; /* Adjusted padding for input fields */
+            transition: border-color 0.3s ease-in-out;
+        }
+
+            .login-form .form-control:focus {
+                background-color: #40444b; /* Keep the same background on focus */
+                box-shadow: none;
+                border-color: #7289da; /* Border color on focus */
+            }
+
+            .login-form .form-control.error {
+                border: 1px solid red; /* Red border for error */
+            }
+
+        .login-form .btn {
+            background-color: #7289da; /* Discord blue button */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            width: 100%;
+            padding: 12px; /* Adjusted padding for button */
+            font-size: 16px;
+        }
+
+            .login-form .btn:hover {
+                background-color: #5b6eae; /* Darker blue on hover */
+            }
+
+        .login-form .footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #ffffff; /* Change text color to white */
+            font-size: 16px; /* Adjust font size for better visibility */
+            font-weight: bold; /* Make the text bold for emphasis */
+        }
+
+            .login-form .footer a {
+                color: #ffcc00; /* Use a bright color for the link */
+                text-decoration: underline; /* Underline the link for emphasis */
+            }
+
+        .input-group {
+            position: relative;
+            margin-bottom: 15px; /* Add margin between input fields */
+        }
+
+            .input-group .toggle-password {
+                position: absolute;
+                right: 10px;
+                top: 50%;
+                transform: translateY(-50%);
+                cursor: pointer;
+                color: #ffffff; /* Color of the eye icon */
+            }
+
+        .text-danger {
+            font-size: 0.875rem;
+        }
+
+        .error-message {
+            font-size: 0.875rem;
+            color: red;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <video autoplay muted loop>
+        <source src="/videos/backgrouund.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <div class="login-container">
+        <div class="login-form">
+            <h1>Login</h1>
+            <form asp-action="Index" asp-controller="Login" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <!-- Username Input -->
+                <div class="form-group">
+                    <label asp-for="Username" class="control-label"></label>
+                    <input asp-for="Username" class="form-control @((TempData["UsernameError"] != null) ? "error" : "")" placeholder="Username" title="Please enter a valid email address (only gmail.com or yahoo.com allowed)." name="Username" />
+                    <span class="text-danger" asp-validation-for="Username"></span>
+                    @if (TempData["UsernameError"] != null)
+                    {
+                        <div class="error-message">
+                            @TempData["UsernameError"]
+                        </div>
+                    }
+                </div>
+
+                <!-- Password Input -->
+                <div class="input-group">
+                    <input type="password" class="form-control @((TempData["PasswordError"] != null) ? "error" : "")" id="password" name="Password" placeholder="Password" required />
+                    <span class="toggle-password" onclick="togglePasswordVisibility()">
+                        <i class="fas fa-eye" id="eyeIcon"></i>
+                    </span>
+                </div>
+                <span class="text-danger" asp-validation-for="Password"></span>
+                @if (TempData["PasswordError"] != null)
+                {
+                    <div class="error-message">
+                        @TempData["PasswordError"]
+                    </div>
+                }
+
+                <button type="submit" class="btn">Login</button>
+            </form>
+            <div class="footer">
+                <p>Don't have an account? <a href="/Account/Register">Register here</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function togglePasswordVisibility() {
+            const passwordInput = document.getElementById('password');
+            const eyeIcon = document.getElementById('eyeIcon');
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                eyeIcon.classList.remove('fa-eye');
+                eyeIcon.classList.add('fa-eye-slash');
+            } else {
+                passwordInput.type = "password";
+                eyeIcon.classList.remove('fa-eye-slash');
+                eyeIcon.classList.add('fa-eye');
+            }
+        }
+    </script>
+</body>
+</html>

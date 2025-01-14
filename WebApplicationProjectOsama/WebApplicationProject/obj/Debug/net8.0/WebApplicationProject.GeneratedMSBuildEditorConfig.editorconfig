@@ -1,0 +1,171 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = WebApplicationProject
+build_property.RootNamespace = WebApplicationProject
+build_property.ProjectDir = C:\Users\manso\source\repos\WebApplicationProject\WebApplicationProject\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\manso\source\repos\WebApplicationProject\WebApplicationProject
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/manso/source/repos/WebApplicationProject/WebApplicationProject/Views/Account/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/manso/source/repos/WebApplicationProject/WebApplicationProject/Views/DiscussionRooms/CreateForum.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGlzY3Vzc2lvblJvb21zXENyZWF0ZUZvcnVtLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/manso/source/repos/WebApplicationProject/WebApplicationProject/Views/DiscussionRooms/ForumRoom.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGlzY3Vzc2lvblJvb21zXEZvcnVtUm9vbS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/manso/source/repos/WebApplicationProject/WebApplicationProject/Views/DiscussionRooms/GetForums.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGlzY3Vzc2lvblJvb21zXEdldEZvcnVtcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/manso/source/repos/WebApplicationProject/WebApplicationProject/Views/Home/AdminHome.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBZG1pbkhvbWUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/manso/source/repos/WebApplicationProject/WebApplicationProject/Views/Home/InstructorHome.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbnN0cnVjdG9ySG9tZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/manso/source/repos/WebApplicationProject/WebApplicationProject/Views/Home/LearnerHome.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxMZWFybmVySG9tZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/manso/source/repos/WebApplicationProject/WebApplicationProject/Views/Instructors/AddLearningPath.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5zdHJ1Y3RvcnNcQWRkTGVhcm5pbmdQYXRoLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/manso/source/repos/WebApplicationProject/WebApplicationProject/Views/Instructors/EditInfo.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5zdHJ1Y3RvcnNcRWRpdEluZm8uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/manso/source/repos/WebApplicationProject/WebApplicationProject/Views/Instructors/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5zdHJ1Y3RvcnNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/manso/source/repos/WebApplicationProject/WebApplicationProject/Views/Instructors/ManageLearners.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5zdHJ1Y3RvcnNcTWFuYWdlTGVhcm5lcnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/manso/source/repos/WebApplicationProject/WebApplicationProject/Views/Learners/AddGoal.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGVhcm5lcnNcQWRkR29hbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/manso/source/repos/WebApplicationProject/WebApplicationProject/Views/Learners/EditInfo.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGVhcm5lcnNcRWRpdEluZm8uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/manso/source/repos/WebApplicationProject/WebApplicationProject/Views/Learners/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGVhcm5lcnNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/manso/source/repos/WebApplicationProject/WebApplicationProject/Views/Learners/LearningPaths.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGVhcm5lcnNcTGVhcm5pbmdQYXRocy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/manso/source/repos/WebApplicationProject/WebApplicationProject/Views/Learners/QuestActions.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGVhcm5lcnNcUXVlc3RBY3Rpb25zLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/manso/source/repos/WebApplicationProject/WebApplicationProject/Views/Learners/QuestParticipants.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGVhcm5lcnNcUXVlc3RQYXJ0aWNpcGFudHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/manso/source/repos/WebApplicationProject/WebApplicationProject/Views/Learners/Quests.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGVhcm5lcnNcUXVlc3RzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/manso/source/repos/WebApplicationProject/WebApplicationProject/Views/Learners/ViewProfile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGVhcm5lcnNcVmlld1Byb2ZpbGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/manso/source/repos/WebApplicationProject/WebApplicationProject/Views/Learners/ViewQuestParticipants.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGVhcm5lcnNcVmlld1F1ZXN0UGFydGljaXBhbnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/manso/source/repos/WebApplicationProject/WebApplicationProject/Views/Login/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/manso/source/repos/WebApplicationProject/WebApplicationProject/Views/Personalization/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVyc29uYWxpemF0aW9uXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/manso/source/repos/WebApplicationProject/WebApplicationProject/Views/Personalization/LearnerProfiles.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVyc29uYWxpemF0aW9uXExlYXJuZXJQcm9maWxlcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/manso/source/repos/WebApplicationProject/WebApplicationProject/Views/Personalization/_DeleteProfilePartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVyc29uYWxpemF0aW9uXF9EZWxldGVQcm9maWxlUGFydGlhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/manso/source/repos/WebApplicationProject/WebApplicationProject/Views/Quest/AddCollaborativeQuest.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUXVlc3RcQWRkQ29sbGFib3JhdGl2ZVF1ZXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/manso/source/repos/WebApplicationProject/WebApplicationProject/Views/Quest/AddQuest.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUXVlc3RcQWRkUXVlc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/manso/source/repos/WebApplicationProject/WebApplicationProject/Views/Quest/DeleteQuestsByCriterion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUXVlc3RcRGVsZXRlUXVlc3RzQnlDcml0ZXJpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/manso/source/repos/WebApplicationProject/WebApplicationProject/Views/Quest/EditQuest.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUXVlc3RcRWRpdFF1ZXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/manso/source/repos/WebApplicationProject/WebApplicationProject/Views/Quest/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUXVlc3RcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/manso/source/repos/WebApplicationProject/WebApplicationProject/Views/Quest/Index1.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUXVlc3RcSW5kZXgxLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/manso/source/repos/WebApplicationProject/WebApplicationProject/Views/Quest/QuestDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUXVlc3RcUXVlc3REZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/manso/source/repos/WebApplicationProject/WebApplicationProject/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/manso/source/repos/WebApplicationProject/WebApplicationProject/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/manso/source/repos/WebApplicationProject/WebApplicationProject/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/manso/source/repos/WebApplicationProject/WebApplicationProject/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/manso/source/repos/WebApplicationProject/WebApplicationProject/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-fzsdxk86kv

@@ -1,0 +1,107 @@
+﻿@model IEnumerable<WebApplicationProject.Models.LearningPath>
+
+@{
+    ViewData["Title"] = "Your Learning Paths";
+}
+
+<style>
+    /* Discord-inspired dark theme styles */
+    body {
+        background-color: #2c2f33; /* Discord background */
+        color: #ffffff;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+    }
+
+    h2 {
+        color: #7289da; /* Discord blue */
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .card-deck {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px; /* Spacing between cards */
+    }
+
+    .card {
+        background-color: #36393f; /* Card background */
+        border: 1px solid #424549; /* Subtle border */
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        width: 18rem;
+        color: #ffffff;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+        }
+
+    .card-title {
+        background-color: #7289da; /* Discord blue */
+        color: #ffffff;
+        padding: 10px;
+        margin: -15px -15px 10px -15px; /* Make title stretch to card edges */
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        font-size: 1.2rem;
+        text-align: center;
+    }
+
+    .card-text {
+        color: #b9bbbe; /* Lighter gray for text */
+        font-size: 0.95rem;
+    }
+
+    .btn-primary {
+        background-color: #7289da;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        color: #ffffff;
+        font-weight: bold;
+        text-transform: uppercase;
+        transition: background-color 0.3s ease;
+    }
+
+        .btn-primary:hover {
+            background-color: #5b6eae;
+        }
+
+    .btn-container {
+        text-align: center;
+        margin-top: 30px;
+    }
+</style>
+
+<h2>Your Learning Paths</h2>
+
+<div class="card-deck">
+    @foreach (var path in Model)
+    {
+        <div class="card">
+            <div class="card-title">
+                Path ID: @path.PathId
+            </div>
+            <div class="card-body">
+                <p class="card-text">
+                    <strong>Completion Status:</strong>
+                    @(path.CompletionStatus.HasValue ? path.CompletionStatus.Value.ToString("P") : "Not Available")
+                    <br>
+                    <strong>Custom Content:</strong> @path.CustomContent
+                    <br>
+                    <strong>Order Number:</strong> @path.OrderNumber
+                </p>
+            </div>
+        </div>
+    }
+</div>
+
+<div class="btn-container">
+    <a href="@Url.Action("LearnerHome", "Home")" class="btn btn-primary">Back to Dashboard</a>
+</div>

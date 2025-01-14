@@ -1,0 +1,59 @@
+﻿@model WebApplicationProject.Models.LearnerProfileTempModel
+
+@{
+    Layout = "_Layout";
+}
+
+<div class="container mt-5">
+    <h1 class="text-center text-white">Edit Profile</h1>
+
+    <div class="card bg-dark text-white border-0 shadow-lg">
+        <div class="card-body">
+            <h5 class="card-title text-center">Update your profile information</h5>
+
+            <!-- Form with anti-forgery token -->
+            <form action="@Url.Action("EditInfo", "Learners")" method="post" enctype="multipart/form-data">
+                @Html.AntiForgeryToken()
+
+                <!-- First Name -->
+                <div class="form-group">
+                    <label for="Fname">First Name</label>
+                    <input type="text" class="form-control" id="Fname" name="Fname" value="@Model.Fname" required />
+                </div>
+
+                <!-- Last Name -->
+                <div class="form-group">
+                    <label for="Lname">Last Name</label>
+                    <input type="text" class="form-control" id="Lname" name="Lname" value="@Model.Lname" required />
+                </div>
+
+                <!-- Country -->
+                <div class="form-group">
+                    <label for="Country">Country</label>
+                    <input type="text" class="form-control" id="Country" name="Country" value="@Model.Country" />
+                </div>
+
+                <!-- Email -->
+                <div class="form-group">
+                    <label for="Email">Email</label>
+                    <input type="email" class="form-control" id="Email" name="Email" value="@Model.Email" />
+                </div>
+
+                <!-- Birthdate -->
+                <div class="form-group">
+                    <label for="BirthDate">Birth Date</label>
+                    <input type="date" class="form-control" id="BirthDate" name="BirthDate" value="@Model.BirthDate?.ToString("yyyy-MM-dd")" />
+                </div>
+
+                <!-- Profile Image -->
+                <div class="form-group">
+                    <label for="ProfileImage">Profile Image</label>
+                    <input type="file" class="form-control" id="ProfileImage" name="ProfileImage" />
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="btn btn-primary" style="background-color: #7289da; border-color: #7289da;">Save Changes</button>
+            </form>
+        </div>
+    </div>
+</div>

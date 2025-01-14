@@ -1,0 +1,94 @@
+﻿@model WebApplicationProject.Models.Quest
+
+@{
+    ViewData["Title"] = "Edit Quest";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <style>
+        /* Discord Dark Theme Styles */
+        body {
+            background-color: #2f3136; /* Dark background */
+            color: #dcddde; /* Light text color */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #ffffff;
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            color: #b9bbbe; /* Light gray for labels */
+        }
+
+        input, select {
+            background-color: #36393f;
+            color: #dcddde;
+            border: 1px solid #484b53;
+            border-radius: 5px;
+            padding: 8px 12px;
+            width: 100%;
+        }
+
+        button {
+            background-color: #7289da; /* Discord blue */
+            color: #ffffff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+        }
+
+            button:hover {
+                background-color: #5e74a5;
+            }
+
+    </style>
+</head>
+<body>
+
+    <h1>Edit Quest</h1>
+
+    <form method="post" action="@Url.Action("EditQuest", "Quest")">
+        @Html.AntiForgeryToken()
+
+        <div class="form-group">
+            <label for="Title">Quest Title</label>
+            <input type="text" class="form-control" id="Title" name="Title" value="@Model.Title" required />
+        </div>
+
+        <div class="form-group">
+            <label for="Description">Description</label>
+            <input type="text" class="form-control" id="Description" name="Description" value="@Model.Description" required />
+        </div>
+
+        <div class="form-group">
+            <label for="Criteria">Criteria</label>
+            <input type="text" class="form-control" id="Criteria" name="Criteria" value="@Model.Criteria" required />
+        </div>
+
+        <div class="form-group">
+            <label for="DifficultyLevel">Difficulty Level</label>
+            <input type="text" class="form-control" id="DifficultyLevel" name="DifficultyLevel" value="@Model.DifficultyLevel" />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+    </form>
+
+</body>
+</html>

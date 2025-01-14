@@ -1,0 +1,115 @@
+﻿@{
+    ViewData["Title"] = "Delete Quests by Criterion";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <style>
+        body {
+            background-color: #2f3136; /* Dark background */
+            color: #dcddde; /* Light text */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h2 {
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+
+        label {
+            color: #b9bbbe; /* Light gray for labels */
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            background-color: #36393f;
+            color: #dcddde;
+            border: 1px solid #484b53;
+            border-radius: 5px;
+            padding: 8px 12px;
+            width: 100%;
+        }
+
+        .btn {
+            background-color: #7289da; /* Discord blue */
+            color: #ffffff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+        }
+
+            .btn:hover {
+                background-color: #5b6eae;
+            }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #3a3b3e;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .error-message {
+            color: #f44336; /* Red for error messages */
+            margin-top: 10px;
+        }
+
+        .success-message {
+            color: #4caf50; /* Green for success messages */
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>@ViewData["Title"]</h2>
+
+        <!-- Check if there are any error or success messages -->
+        @if (ViewBag.ErrorMessage != null)
+        {
+            <div class="error-message">
+                @ViewBag.ErrorMessage
+            </div>
+        }
+
+        @if (ViewBag.SuccessMessage != null)
+        {
+            <div class="success-message">
+                @ViewBag.SuccessMessage
+            </div>
+        }
+
+        <!-- Form to delete quests by criterion -->
+        <form method="post" asp-action="DeleteQuestsByCriterion">
+            <div class="form-group">
+                <label for="Criterion">Enter Criterion to Delete Quests:</label>
+                <input type="text" class="form-control" id="Criterion" name="criterion" value="@ViewBag.Criterion" required />
+            </div>
+            <button type="submit" class="btn">Delete Quests</button>
+        </form>
+
+        @if (ViewBag.DeletedQuestCount != null)
+        {
+            <div class="success-message">
+                @ViewBag.DeletedQuestCount quests were deleted successfully.
+            </div>
+        }
+    </div>
+
+</body>
+</html>

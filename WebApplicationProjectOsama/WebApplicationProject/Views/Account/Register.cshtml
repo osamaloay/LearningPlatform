@@ -1,0 +1,240 @@
+﻿@model WebApplicationProject.Models.User
+
+@{
+    ViewData["Title"] = "Register";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .account-text {
+            color: yellow;
+        }
+
+        video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -1;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+        }
+
+        .register-container {
+            background-color: rgba(35, 39, 42, 0.9);
+            border-radius: 8px;
+            padding: 40px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            width: 100%;
+            max-width: 400px;
+            height: 90%; /* Set a fixed height to enable scrolling */
+            overflow-y: auto;
+            scroll-behavior: smooth;
+        }
+
+            /* Hide the scrollbar */
+            .register-container::-webkit-scrollbar {
+                width: 0; /* Remove scrollbar width */
+            }
+
+        .register-container {
+            -ms-overflow-style: none; /* IE and Edge */
+            scrollbar-width: none; /* Firefox */
+        }
+
+        .register-form h1 {
+            color: #7289da;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .register-form .form-control {
+            background-color: #40444b;
+            border: none;
+            color: #fff;
+        }
+
+            .register-form .form-control:focus {
+                border-color: #7289da;
+                box-shadow: none;
+            }
+
+        .register-form .btn {
+            background-color: #7289da;
+            color: white;
+            border: none;
+            width: 100%;
+        }
+
+        .additional-fields {
+            display: none;
+        }
+
+        .text-danger {
+            font-size: 0.9em;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            function toggleAdditionalFields() {
+                var role = document.getElementById("Role").value;
+                var learnerFields = document.getElementById("learnerFields");
+                var instructorFields = document.getElementById("instructorFields");
+
+                learnerFields.style.display = "none";
+                instructorFields.style.display = "none";
+
+                document.querySelectorAll("#learnerFields input").forEach(input => input.value = "");
+                document.querySelectorAll("#instructorFields input").forEach(input => input.value = "");
+
+                if (role === "Learner") {
+                    learnerFields.style.display = "block";
+                } else if (role === "Instructor") {
+                    instructorFields.style.display = "block";
+                }
+            }
+
+            document.getElementById("Role").addEventListener("change", toggleAdditionalFields);
+        });
+    </script>
+</head>
+<body>
+    <video autoplay muted loop>
+        <source src="/videos/back2.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <div class="register-container">
+        <div class="register-form">
+            <h1>Register</h1>
+            <form asp-action="Register" asp-controller="Account" method="post">
+                @Html.AntiForgeryToken()
+
+                <!-- Global Error Messages -->
+                @if (TempData["ErrorMessage"] != null)
+                {
+                    <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+                }
+
+                @if (TempData["DuplicateError"] != null)
+                {
+                    <div class="alert alert-danger">@TempData["DuplicateError"]</div>
+                }
+
+                <!-- Username -->
+                <div class="form-group">
+                    <label asp-for="Username"></label>
+                    <input asp-for="Username" class="form-control" placeholder="Username" name="Username" />
+                    @if (TempData["UsernameError"] != null)
+                    {
+                        <span class="text-danger">@TempData["UsernameError"]</span>
+                    }
+                </div>
+
+                <!-- Password -->
+                <div class="form-group">
+                    <label asp-for="Password"></label>
+                    <input asp-for="Password" type="password" class="form-control" placeholder="Password" name="Password" />
+                    @if (TempData["PasswordError"] != null)
+                    {
+                        <span class="text-danger">@TempData["PasswordError"]</span>
+                    }
+                </div>
+
+                <!-- Email -->
+                <div class="form-group">
+                    <label asp-for="Email"></label>
+                    <input asp-for="Email" class="form-control" placeholder="Email" name="Email" />
+                    @if (TempData["EmailError"] != null)
+                    {
+                        <span class="text-danger">@TempData["EmailError"]</span>
+                    }
+                </div>
+
+                <!-- Role -->
+                <div class="form-group">
+                    <label asp-for="Role"></label>
+                    <select asp-for="Role" class="form-control" id="Role" name="Role">
+                        <option value="">Select Role</option>
+                        <option value="Admin">Admin</option>
+                        <option value="Learner">Learner</option>
+                        <option value="Instructor">Instructor</option>
+                    </select>
+                    @if (TempData["RoleError"] != null)
+                    {
+                        <span class="text-danger">@TempData["RoleError"]</span>
+                    }
+                </div>
+
+                <!-- Learner Fields -->
+                <div id="learnerFields" class="additional-fields">
+                    <div class="form-group">
+                        <label asp-for="Learner.Fname"></label>
+                        <input asp-for="Learner.Fname" class="form-control" placeholder="First Name" name="Learner.Fname" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Learner.Lname"></label>
+                        <input asp-for="Learner.Lname" class="form-control" placeholder="Last Name" name="Learner.Lname" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Learner.Gender"></label>
+                        <select asp-for="Learner.Gender" class="form-control" name="Learner.Gender">
+                            <option value="">Select Gender</option>
+                            <option value="true">Male</option>
+                            <option value="false">Female</option>
+                            <option value="null">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Learner.BirthDate"></label>
+                        <input asp-for="Learner.BirthDate" class="form-control" type="date" name="Learner.BirthDate" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Learner.Country"></label>
+                        <input asp-for="Learner.Country" class="form-control" placeholder="Country" name="Learner.Country" />
+                    </div>
+                </div>
+
+                <!-- Instructor Fields -->
+                <div id="instructorFields" class="additional-fields">
+                    <div class="form-group">
+                        <label asp-for="Instructor.Name"></label>
+                        <input asp-for="Instructor.Name" class="form-control" placeholder="Instructor Name" name="Instructor.Name" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Instructor.ExpertiseArea"></label>
+                        <input asp-for="Instructor.ExpertiseArea" class="form-control" placeholder="Expertise Area" name="Instructor.ExpertiseArea" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Instructor.LatestQualification"></label>
+                        <input asp-for="Instructor.LatestQualification" class="form-control" placeholder="Latest Qualification" name="Instructor.LatestQualification" />
+                    </div>
+                </div>
+
+                <button type="submit" class="btn">Register</button>
+            </form>
+            <div class="footer text-center mt-3">
+                <p class="account-text">Already have an account? <a href="/Login/Index">Login here</a></p>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>

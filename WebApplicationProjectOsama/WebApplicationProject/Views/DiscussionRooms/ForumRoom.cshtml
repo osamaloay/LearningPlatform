@@ -1,0 +1,252 @@
+﻿@model WebApplicationProject.Controllers.ForumViewModel
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@Model.Forum.Title - Discussion Forum</title>
+    <style>
+        /* General Styling */
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #fff;
+            background-color: #2c2f34;
+            display: flex;
+            flex-direction: row;
+            height: 100vh;
+        }
+
+        .discord-layout {
+            display: flex;
+            width: 100%;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 250px;
+            background-color: #202225;
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+            height: 100%;
+        }
+
+        .server-header {
+            padding: 20px;
+            text-align: center;
+            background-color: #2f3136;
+            font-size: 18px;
+            font-weight: bold;
+            color: #d1d1d1;
+            margin-bottom: 15px;
+            border-radius: 8px;
+        }
+
+        .server-list {
+            flex-grow: 1;
+            overflow-y: auto;
+        }
+
+        .server-item {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            margin: 5px 10px;
+            background-color: #36393f;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+        }
+
+        .server-item:hover {
+            background-color: #484b51;
+        }
+
+        .server-link {
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+
+        .server-icon img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .server-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .server-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .server-description {
+            font-size: 14px;
+            color: #b9bbbe;
+        }
+
+        /* Chat Window */
+        .chat-window {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            background-color: #36393f;
+            color: #b9bbbe;
+            padding: 20px;
+        }
+
+        .chat-placeholder {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .message-box {
+            width: 90%;
+            margin: 10px 0;
+            background-color: #444;
+            padding: 10px;
+            border-radius: 10px;
+            color: #b9bbbe;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .message-header {
+            font-weight: bold;
+        }
+
+        .message-content {
+            margin-top: 5px;
+        }
+
+        .message-form {
+            width: 90%;
+            display: flex;
+            flex-direction: column;
+            margin-top: 20px;
+        }
+
+        .message-input {
+            padding: 10px;
+            background-color: #444;
+            border-radius: 8px;
+            color: #b9bbbe;
+            border: none;
+            margin-bottom: 10px;
+            resize: none;
+        }
+
+        .submit-btn {
+            background-color: #7289da;
+            border: none;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .submit-btn:hover {
+            background-color: #5c6f9f;
+        }
+
+        /* Minor Responsive Fixes */
+     
+
+            .server-list {
+                flex-grow: 0;
+            }
+
+            .chat-window {
+                margin-left: 0;
+            }
+
+            .message-box {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="discord-layout">
+        <!-- Sidebar (Server List) -->
+        <div class="sidebar">
+            <div class="server-header">
+                <h3>Discussion Servers</h3>
+            </div>
+            <div class="server-list">
+                @foreach (var forum in Model.LearnerDiscussions)
+                {
+                    <div class="server-item">
+                        <a href="@Url.Action("ForumRoom", "DiscussionRooms", new { forumId = forum.ForumId })" class="server-link">
+                            <div class="server-icon">
+                                <img src="https://via.placeholder.com/40" alt="server-icon" />
+                            </div>
+                            <div class="server-info">
+                                <h4 class="server-title">@forum.Forum.Title</h4>
+                                <p class="server-description">@forum.Forum.Description</p>
+                            </div>
+                        </a>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <!-- Chat Window (Forum Posts) -->
+        <div class="chat-window">
+            <div class="chat-placeholder">
+                @if (Model.Forum != null)
+                {
+                    <h2>@Model.Forum.Title</h2>
+                    <p>@Model.Forum.Description</p>
+                }
+                else
+                {
+                    <p>Forum information is not available.</p>
+                }
+            </div>
+
+          <!-- Unified Message Box (Both Learner and Instructor Discussions) -->
+<div class="message-box">
+    <h3>Discussions:</h3>
+
+    <!-- Render all discussions (Learner + Instructor) -->
+    @if (Model.LearnerDiscussions != null)
+    {
+        @foreach (var discussion in Model.LearnerDiscussions.OrderBy(d => d.TimePosted)) 
+       
+        {
+            <div class="message-content">
+                <div class="message-header">@discussion.SidNavigation.Username</div><div class="message-time">@discussion.TimePosted.ToString("HH:mm")</div>
+                <div class="message-body">@discussion.Post</div>
+                            
+                            <!-- Display time -->
+            </div>
+        }
+    }
+    else
+    {
+        <p>No discussions available.</p>
+    }
+</div>
+
+            <!-- Post Form -->
+            <form class="message-form" method="post" action="@Url.Action("Posting", "DiscussionRooms")">
+                @Html.AntiForgeryToken()
+                <textarea name="postContent" class="message-input" placeholder="Type your message..." rows="4"></textarea>
+                <input type="hidden" name="forumId" value="@Model.Forum.ForumId" />
+                <button type="submit" class="submit-btn">Post Message</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

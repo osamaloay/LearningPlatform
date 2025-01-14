@@ -1,0 +1,167 @@
+﻿@model IEnumerable<WebApplicationProject.Models.PersonalizationProfile>
+
+@{
+    ViewData["Title"] = "Manage Personalization Profiles";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* General page styling */
+        body {
+            background: linear-gradient(135deg, #6a82fb, #fc5c7d); /* Soft gradient background */
+            color: #ffffff; /* White text for contrast */
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        .page-title {
+            text-align: center;
+            font-size: 3rem;
+            color: #fff;
+            margin-bottom: 40px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Profile list layout */
+        .profile-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+
+        .profile-post {
+            flex: 1 1 calc(30% - 20px); /* 30% width with spacing */
+            border-radius: 10px;
+            padding: 20px;
+            background-color: #2f3136;
+            color: #ffffff;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s ease;
+        }
+
+        .profile-post:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.5);
+        }
+
+        .profile-header {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #ff6347; /* Soft orange-red */
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .profile-id {
+            font-size: 14px;
+            color: #99aab5;
+        }
+
+        .profile-details p {
+            margin: 8px 0;
+            font-size: 16px;
+        }
+
+        .btn-danger {
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .btn-danger:hover {
+            background-color: #e60000;
+            transform: scale(1.05);
+        }
+
+        .btn-secondary {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+        }
+
+        /* Responsive styling */
+       
+
+            .page-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="page-title">Manage Personalization Profiles</h1>
+
+        <!-- Link to go back to Learner Home -->
+        <div style="margin-bottom: 20px; text-align: center;">
+            <a href="@Url.Action("LearnerHome", "Home")" class="btn-secondary">Back to Learner Home</a>
+        </div>
+
+        <div class="profile-list">
+            @if (!Model.Any())
+            {
+                <p>No personalization profiles found.</p>
+            }
+            else
+            {
+                @foreach (var profile in Model)
+                {
+                    <div class="profile-post">
+                        <div class="profile-header">
+                            <span>@profile.EmotionalState</span>
+                            <span class="profile-id">Order Number: @profile.OrderNumber</span>
+                        </div>
+                        <div class="profile-details">
+                            <p><strong>Personality Type:</strong> @profile.PersonalityType</p>
+                            <p><strong>Preferred Content Type:</strong> @profile.PreferedContentType</p>
+                        </div>
+                        <!-- Delete Button -->
+                        <form method="post" action="@Url.Action("LearnerDelete", "Personalization", new { orderNumber = profile.OrderNumber })" onsubmit="return confirmDelete();">
+                            <button type="submit" class="btn-danger">Delete</button>
+                        </form>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+
+    <script>
+        // Confirmation alert before deletion
+        function confirmDelete() {
+            return confirm("Are you sure you want to delete this personalization profile?");
+        }
+    </script>
+</body>
+</html>

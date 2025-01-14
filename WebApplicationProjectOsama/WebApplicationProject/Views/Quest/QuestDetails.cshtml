@@ -1,0 +1,109 @@
+﻿@model WebApplicationProject.Models.Quest
+
+@{
+    ViewData["Title"] = "Quest Details";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <style>
+        /* Discord Dark Theme Styles */
+        body {
+            background-color: #2f3136; /* Dark background */
+            color: #dcddde; /* Light text color */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h2 {
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+
+        h3, h4 {
+            color: #7289da; /* Discord blue for headings */
+        }
+
+        p {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+
+        strong {
+            color: #b9bbbe; /* Light gray for labels */
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: #36393f;
+            border-radius: 5px;
+            padding: 8px;
+            margin: 5px 0;
+            color: #dcddde;
+        }
+
+        li:hover {
+            background-color: #40444b; /* Hover effect */
+        }
+
+        .btn-back {
+            background-color: #7289da;
+            color: #ffffff;
+            padding: 8px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+        }
+
+        .btn-back:hover {
+            background-color: #5e74a5; /* Hover color */
+        }
+    </style>
+</head>
+<body>
+
+    <h2>@ViewData["Title"]</h2>
+
+    <h3>@Model.Title</h3>
+    <p><strong>Description:</strong> @Model.Description</p>
+    <p><strong>Criteria:</strong> @Model.Criteria</p>
+    <p><strong>Difficulty Level:</strong> @Model.DifficultyLevel</p>
+
+    @if (Model.CollaborativeQuest != null)
+    {
+        <h4>Collaborative Quest Details</h4>
+        <p><strong>Deadline:</strong> @Model.CollaborativeQuest.Deadline</p>
+        <p><strong>Max Participants:</strong> @Model.CollaborativeQuest.MaxParticipants</p>
+    }
+
+    <h4>Skill Mastery</h4>
+    <ul>
+        @foreach (var skill in Model.SkillMasteryQuests)
+        {
+            <li>@skill.Skill</li>
+        }
+    </ul>
+
+    <h4>Participants</h4>
+    <ul>
+        @foreach (var participant in Model.LearnersCollaborations)
+        {
+            <li>@participant.SidNavigation.Fname - @participant.CompletetionStatus</li>
+        }
+    </ul>
+
+    <a href="@Url.Action("Index", "Quest")" class="btn-back">Back to All Quests</a>
+
+</body>
+</html>

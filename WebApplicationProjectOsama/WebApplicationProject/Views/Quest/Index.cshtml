@@ -1,0 +1,129 @@
+﻿@model IEnumerable<WebApplicationProject.Models.Quest>
+
+@{
+    ViewData["Title"] = "All Quests";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <style>
+        /* Discord Dark Theme Styles */
+        body {
+            background-color: #2f3136; /* Dark background */
+            color: #dcddde; /* Light text color */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #ffffff;
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #36393f; /* Darker table background */
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+            .table th, .table td {
+                padding: 12px;
+                text-align: left;
+            }
+
+            .table th {
+                background-color: #202225; /* Dark header background */
+                color: #b9bbbe; /* Light text for headers */
+            }
+
+            .table td {
+                border-top: 1px solid #2f3136; /* Table row borders */
+            }
+
+            .table tr:nth-child(even) {
+                background-color: #2f3136; /* Alternating row colors */
+            }
+
+            .table tr:hover {
+                background-color: #40444b; /* Row hover effect */
+            }
+
+        .btn {
+            padding: 6px 12px;
+            border-radius: 5px;
+            text-decoration: none;
+            color: #ffffff;
+            cursor: pointer;
+            font-size: 0.875rem;
+            border: none;
+            transition: background-color 0.2s ease-in-out;
+        }
+
+        .btn-info {
+            background-color: #7289da; /* Discord blue */
+        }
+
+            .btn-info:hover {
+                background-color: #5e74a5; /* Darker blue on hover */
+            }
+
+        .btn-danger {
+            background-color: #f04747; /* Red color */
+        }
+
+            .btn-danger:hover {
+                background-color: #e02f2f; /* Darker red on hover */
+            }
+
+        form {
+            display: inline;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>All Quests</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var quest in Model)
+            {
+                <tr>
+                    <td>@quest.Title</td>
+                    <td>@quest.Description</td>
+                    <td>
+                        <a href="@Url.Action("QuestDetails", "Quest", new { questId = quest.QuestId })" class="btn btn-info">Details</a>
+
+                        <!-- Add the correct link for deleting by criterion (as GET or POST) -->
+                        <form action="@Url.Action("DeleteQuestsByCriterion", "Quest")" method="post" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete quests with this criterion?');">
+                            <input type="hidden" name="criterion" value="yourCriterionHere" /> <!-- Define the criterion dynamically -->
+                            <button type="submit" class="btn btn-danger">Delete by Criterion</button>
+                        </form>
+
+                        <a href="@Url.Action("AddQuest", "Quest")" class="btn btn-link">Add quest</a>
+
+                        <!-- Correctly link to EditQuest by passing questId -->
+                        <a href="@Url.Action("EditQuest", "Quest", new { questId = quest.QuestId })" class="btn btn-link">Edit quest</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</body>
+</html>
