@@ -4,7 +4,7 @@ the aim of the project is to enhance the experience of the users to engage with 
 
 
 ## EERD Schema Diagram
-![EERD Schema](erd mile1.jpg)
+![EERD Schema](erd_mile1.jpg)
 
 
 ## Future Features 
